@@ -1,0 +1,14 @@
+.deleteButton {
+    display: inline-block;
+    margin-left: auto;
+}
+
+.list {
+    width: 300px;
+}
+
+.listItem {
+    display: flex;
+    margin-bottom: 10px;
+    font-size: 16px;
+}

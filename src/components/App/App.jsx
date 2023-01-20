@@ -20,9 +20,16 @@ export class App extends Component {
   };
 
   addContact = contact => {
-    this.setState(prevState => ({
-      contacts: [...prevState.contacts, contact],
-    }));
+    const isNameExist = this.state.contacts
+      .map(currentContact => currentContact.name)
+      .includes(contact.name);
+    console.log(isNameExist);
+
+    isNameExist
+      ? alert(`${contact.name} is already in contacts`)
+      : this.setState(prevState => ({
+          contacts: [...prevState.contacts, contact],
+        }));
   };
 
   changeFilter = e => {

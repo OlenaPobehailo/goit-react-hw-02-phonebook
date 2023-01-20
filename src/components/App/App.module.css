@@ -12,9 +12,11 @@ p {
     margin-bottom: 0;
 }
 
-ul{
+ul {
     padding-left: 0;
 }
-.title{
+
+.title {
     font-size: 28px;
+    margin-bottom: 10px;
 }

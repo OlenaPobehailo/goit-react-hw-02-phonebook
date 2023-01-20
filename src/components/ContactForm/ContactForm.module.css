@@ -1,0 +1,32 @@
+.form {
+    width: 300px;
+    min-height: 100px;
+     padding: 20px;
+}
+
+.input {
+    display: block;
+    height: 26px;
+    margin-top: 10px;
+    font-size: 18px;
+
+}
+
+.label {
+    font-size: 18px;
+}
+
+.button {
+    width: 226px;
+    height: 36px;
+    margin-top: 10px;
+    border-radius: 2px;
+    border: none;
+    font-size: 18px;
+
+}
+
+.button:hover,
+.button:focus{
+    background-color:azure;
+    box-shadow: 2px 3px 8px 2px rgba(0,0,0,0.2);}

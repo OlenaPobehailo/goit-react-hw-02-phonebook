@@ -15,15 +15,15 @@ export class App extends Component {
     filter: '',
   };
 
-  formSubmitHandler = data => {
-    console.log(data);
-  };
+  // formSubmitHandler = data => {
+  //   console.log(data);
+  // };
 
   addContact = contact => {
     const isNameExist = this.state.contacts
       .map(currentContact => currentContact.name)
       .includes(contact.name);
-    console.log(isNameExist);
+    //console.log(isNameExist);
 
     isNameExist
       ? alert(`${contact.name} is already in contacts`)
@@ -33,7 +33,7 @@ export class App extends Component {
   };
 
   deleteContact = contactId => {
-    console.log(contactId);
+    //console.log(contactId);
 
     this.setState(prevState => {
       return {

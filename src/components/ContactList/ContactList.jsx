@@ -8,7 +8,7 @@ export const ContactList = ({ contacts, onDeleteContact }) => {
       {contacts.map(contact => (
         <li
           className={css.listItem}
-          id={shortid.generate()}
+          // id={shortid.generate()}
           key={shortid.generate()}
         >
           {contact.name + ': ' + contact.number}

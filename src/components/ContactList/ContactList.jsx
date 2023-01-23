@@ -1,16 +1,11 @@
 import PropTypes from 'prop-types';
 import css from './ContactList.module.css';
-import shortid from 'shortid';
 
 export const ContactList = ({ contacts, onDeleteContact }) => {
   return (
     <ul className={css.list}>
       {contacts.map(contact => (
-        <li
-          className={css.listItem}
-          // id={shortid.generate()}
-          key={shortid.generate()}
-        >
+        <li className={css.listItem} key={contact.id}>
           {contact.name + ': ' + contact.number}
 
           <button

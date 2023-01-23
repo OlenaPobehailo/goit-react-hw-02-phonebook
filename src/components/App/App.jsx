@@ -16,10 +16,6 @@ export class App extends Component {
     filter: '',
   };
 
-  // formSubmitHandler = data => {
-  //   console.log(data);
-  // };
-
   addContact = ({ name, number }) => {
     const newContact = {
       id: shortid.generate(),
@@ -29,9 +25,7 @@ export class App extends Component {
     const isNameExist = this.state.contacts
       .map(contact => contact.name)
       .includes(name);
-    //console.log(isNameExist);
-    //console.log(newContact.id);
-
+    
     isNameExist
       ? alert(`${name} is already in contacts`)
       : this.setState(prevState => ({
@@ -40,7 +34,6 @@ export class App extends Component {
   };
 
   deleteContact = contactId => {
-    //console.log(contactId);
     this.setState(prevState => {
       return {
         contacts: prevState.contacts.filter(({ id }) => id !== contactId),
@@ -64,7 +57,6 @@ export class App extends Component {
       <div>
         <h1 className={css.title}>Phonebook</h1>
         <ContactForm
-          onFormSubmit={this.formSubmitHandler}
           onAddContact={this.addContact}
         />
         <h2 className={css.title}>Contacts</h2>

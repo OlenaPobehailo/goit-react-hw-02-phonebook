@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid';
 import { Component } from 'react';
 
 export class ContactForm extends Component {
@@ -18,7 +19,12 @@ export class ContactForm extends Component {
     // console.log(this.state);
 
     const { name, number } = this.state;
-    const newContact = { name, number };
+    
+    const newContact = {
+      id: nanoid(),
+      name,
+      number,
+    };
 
     this.props.onAddContact(newContact);
 

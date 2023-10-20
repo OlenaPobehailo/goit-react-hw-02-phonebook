@@ -3,6 +3,7 @@ import { Component } from 'react';
 import ContactForm from './ContactForm';
 import Filter from './Filter';
 import ContactList from './ContactList';
+import { nanoid } from 'nanoid';
 
 export class App extends Component {
   state = {
@@ -15,10 +16,22 @@ export class App extends Component {
     filter: '',
   };
 
-  addContact = contact => {
-    this.setState(prevState => ({
-      contacts: [...prevState.contacts, contact],
-    }));
+  addContact = ({ name, number }) => {
+    const newContact = {
+      id: nanoid(),
+      name,
+      number,
+    };
+
+    const isNameExist = this.state.contacts
+      .map(contact => contact.name)
+      .includes(name);
+
+    isNameExist
+      ? alert(`${name} is already in contacts`)
+      : this.setState(prevState => ({
+          contacts: [...prevState.contacts, newContact],
+        }));
   };
 
   changeFilter = e => {
@@ -41,7 +54,6 @@ export class App extends Component {
         <h2>Contacts</h2>
         <Filter value={filter} onChange={this.changeFilter} />
         <ContactList contacts={visibleContacts} />
-        
       </div>
     );
   }

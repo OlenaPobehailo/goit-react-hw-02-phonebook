@@ -1,8 +1,10 @@
 import { nanoid } from 'nanoid';
 
 import { Component } from 'react';
+
 import ContactForm from './ContactForm';
 import Filter from './Filter';
+import ContactList from './ContactList';
 
 export class App extends Component {
   state = {
@@ -40,11 +42,8 @@ export class App extends Component {
         <ContactForm onAddContact={this.addContact} />
         <h2>Contacts</h2>
         <Filter value={filter} onChange={this.changeFilter} />
-        <ul>
-          {visibleContacts.map(contact => (
-            <li key={nanoid()}>{contact.name + ': ' + contact.number}</li>
-          ))}
-        </ul>
+        <ContactList contacts={visibleContacts} />
+        
       </div>
     );
   }

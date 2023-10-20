@@ -2,6 +2,7 @@ import { nanoid } from 'nanoid';
 
 import { Component } from 'react';
 import ContactForm from './ContactForm';
+import Filter from './Filter';
 
 export class App extends Component {
   state = {
@@ -25,31 +26,24 @@ export class App extends Component {
   };
 
   render() {
-    // console.log(this.state.contacts);
+    const { contacts, filter } = this.state;
+
+    const normalizedFilter = filter.toLowerCase();
+
+    const visibleContacts = contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+
     return (
       <div>
         <h1>Phonebook</h1>
         <ContactForm onAddContact={this.addContact} />
         <h2>Contacts</h2>
-        <label htmlFor="">
-          Find contacts by name
-          <input
-            type="text"
-            name="filter"
-            value={this.state.filter}
-            onChange={this.changeFilter}
-          />
-        </label>{' '}
+        <Filter value={filter} onChange={this.changeFilter} />
         <ul>
-          {this.state.contacts
-            .filter(contact =>
-              contact.name
-                .toLowerCase()
-                .includes(this.state.filter.toLowerCase())
-            )
-            .map(contact => (
-              <li key={nanoid()}>{contact.name + ': ' + contact.number}</li>
-            ))}
+          {visibleContacts.map(contact => (
+            <li key={nanoid()}>{contact.name + ': ' + contact.number}</li>
+          ))}
         </ul>
       </div>
     );

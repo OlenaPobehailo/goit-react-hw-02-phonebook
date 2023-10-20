@@ -1,10 +1,12 @@
 import { nanoid } from 'nanoid';
+
 import { Component } from 'react';
 
 export class App extends Component {
   state = {
     contacts: [],
     name: '',
+    number: '',
   };
 
   handleInputChange = e => {
@@ -18,7 +20,9 @@ export class App extends Component {
     e.preventDefault();
     // console.log(this.state);
 
-    const newContact = { name: this.state.name };
+    const { name, number } = this.state;
+    const newContact = { name, number };
+
     this.setState(prevState => ({
       contacts: [...prevState.contacts, newContact],
     }));
@@ -27,7 +31,7 @@ export class App extends Component {
   };
 
   reset = () => {
-    this.setState({ name: '' });
+    this.setState({ name: '', number: '' });
   };
 
   render() {
@@ -47,13 +51,24 @@ export class App extends Component {
             />
           </label>
 
+          <label htmlFor="">
+            Number
+            <input
+              type="tel"
+              name="number"
+              value={this.state.number}
+              onChange={this.handleInputChange}
+              required
+            />
+          </label>
+
           <button type="submit">Add contact</button>
         </form>
         <h2>Contacts</h2>
 
         <ul>
           {this.state.contacts.map(contact => (
-            <li key={nanoid()}>{contact.name}</li>
+            <li key={nanoid()}>{contact.name + ': ' + contact.number}</li>
           ))}
         </ul>
       </div>

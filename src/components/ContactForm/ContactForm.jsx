@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { Input, Button } from './ContactForm.styled';
+
 export class ContactForm extends Component {
   state = {
     name: '',
@@ -9,8 +11,8 @@ export class ContactForm extends Component {
 
   handleInputChange = e => {
     const { name, value } = e.target;
-    console.log(name);
-    console.log(value);
+    // console.log(name);
+    // console.log(value);
     this.setState({ [name]: value });
   };
 
@@ -29,7 +31,7 @@ export class ContactForm extends Component {
       <form onSubmit={this.handleSubmit}>
         <label htmlFor="">
           Name
-          <input
+          <Input
             type="text"
             name="name"
             value={this.state.name}
@@ -40,7 +42,7 @@ export class ContactForm extends Component {
 
         <label htmlFor="">
           Number
-          <input
+          <Input
             type="tel"
             name="number"
             value={this.state.number}
@@ -49,7 +51,7 @@ export class ContactForm extends Component {
           />
         </label>
 
-        <button type="submit">Add contact</button>
+        <Button type="submit">Add contact</Button>
       </form>
     );
   }

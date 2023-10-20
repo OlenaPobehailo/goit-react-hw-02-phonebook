@@ -1,6 +1,7 @@
 import { nanoid } from 'nanoid';
 
 import { Component } from 'react';
+import ContactForm from './ContactForm';
 
 export class App extends Component {
   state = {
@@ -11,33 +12,12 @@ export class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: '',
-    number: '',
   };
 
-  handleInputChange = e => {
-    const { name, value } = e.target;
-    console.log(name);
-    console.log(value);
-    this.setState({ [name]: value });
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-    // console.log(this.state);
-
-    const { name, number } = this.state;
-    const newContact = { name, number };
-
+  addContact = contact => {
     this.setState(prevState => ({
-      contacts: [...prevState.contacts, newContact],
+      contacts: [...prevState.contacts, contact],
     }));
-
-    this.reset();
-  };
-
-  reset = () => {
-    this.setState({ name: '', number: '' });
   };
 
   changeFilter = e => {
@@ -49,31 +29,7 @@ export class App extends Component {
     return (
       <div>
         <h1>Phonebook</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="">
-            Name
-            <input
-              type="text"
-              name="name"
-              value={this.state.name}
-              onChange={this.handleInputChange}
-              required
-            />
-          </label>
-
-          <label htmlFor="">
-            Number
-            <input
-              type="tel"
-              name="number"
-              value={this.state.number}
-              onChange={this.handleInputChange}
-              required
-            />
-          </label>
-
-          <button type="submit">Add contact</button>
-        </form>
+        <ContactForm onAddContact={this.addContact} />
         <h2>Contacts</h2>
         <label htmlFor="">
           Find contacts by name
